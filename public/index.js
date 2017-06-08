@@ -12,3 +12,11 @@ socket.on('disconnect', () => {
 socket.on('newMessage', (msg) => {
   console.log('newMessage', msg);
 });
+
+socket.on('userConnected', (msg) => {
+  console.log('I am connected', msg);
+});
+
+socket.on('newUserJoined', (msg) => {
+  console.log('newUserJoined', msg);
+});
