@@ -20,3 +20,11 @@ socket.on('userConnected', (msg) => {
 socket.on('newUserJoined', (msg) => {
   console.log('newUserJoined', msg);
 });
+
+
+socket.emit('createMessage', {
+  from:'Franck',
+  text:'Hi',
+}, function(data) {
+  console.log('got it', data);
+});
