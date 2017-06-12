@@ -12,9 +12,11 @@ const server = htpp.createServer(app);
 const io = socketIO(server);
 
 const PORT = process.env.PORT || 3100
-const PUBLIC_PATH = path.join(__dirname, '../public');
+const PUBLIC_PATH = path.join(__dirname, './../public');
+const DIST_PATH =  path.join(__dirname, './../build');
 
 // express static middleware
+app.use('/build',express.static(DIST_PATH));
 app.use(express.static(PUBLIC_PATH));
 
 app.get('/timeout', function (req, res) {
