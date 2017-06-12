@@ -1,3 +1,4 @@
+const sum = require('./sum');
 const socket = io();
 
 socket.on('connect', () => {

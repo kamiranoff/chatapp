@@ -11,12 +11,15 @@ const server = htpp.createServer(app);
 // socketIO
 const io = socketIO(server);
 
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 3100
 const PUBLIC_PATH = path.join(__dirname, '../public');
 
 // express static middleware
 app.use(express.static(PUBLIC_PATH));
 
+app.get('/timeout', function (req, res) {
+  console.log('here');
+});
 
 io.on('connection', (socket) => {
   console.log('new user connected');
