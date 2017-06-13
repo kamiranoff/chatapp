@@ -1,0 +1,4 @@
+img {
+  border: 10px solid aquamarine;
+  max-width: calc(100% - 20px);
+}

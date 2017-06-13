@@ -1,4 +1,6 @@
-const sum = require('./sum');
+import sum from './sum';
+import './image_viewer';
+
 const socket = io();
 
 socket.on('connect', () => {
@@ -29,3 +31,5 @@ socket.emit('createMessage', {
 }, function(data) {
   console.log('got it', data);
 });
+
+console.log('here', sum(10,100));
