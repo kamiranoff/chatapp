@@ -1,28 +1,38 @@
+const webpack = require('webpack');
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+const VENDORS_LIBS = [
+  'react',
+  'react-redux',
+  'redux',
+  'redux-thunk',
+  'socket.io-client',
+];
 
 // use to extract css in its own file.
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const config = {
-  entry: './public/index.js',
+  entry: {
+    bundle: './src/index.js',
+    vendor: VENDORS_LIBS,
+  },
   output: {
-    path: path.resolve(__dirname + '/build'),
-    filename: 'bundle.js',
-    publicPath: "/build/",
+    path: path.resolve(__dirname + '/dist'),
+    filename: '[name].js',
+    publicPath: '/dist/',
   },
   module: {
     rules: [
       {
         use: 'babel-loader',
         test: /\.js$/,
+        exclude: /node_modules/
       },
       {
-        // loader is deprecated. See if updating possible.
-        use: ExtractTextPlugin.extract({
-          use: 'css-loader',
-          fallback: 'style-loader'
-        }),
         test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/,
@@ -37,7 +47,13 @@ const config = {
     ]
   },
   plugins: [
-    new ExtractTextPlugin('style.css')
+    new ExtractTextPlugin('style.css'),
+    new HtmlWebpackPlugin({
+      template: 'src/index.html'
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
+    }),
   ]
 };
 

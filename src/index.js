@@ -1,3 +1,5 @@
+import io from 'socket.io-client';
+
 import sum from './sum';
 import './image_viewer';
 

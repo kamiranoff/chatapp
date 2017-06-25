@@ -1,0 +1,8 @@
+body {
+  background: #444;
+}
+
+img {
+  border: 10px solid #ddd;
+  max-width: calc(100% - 20px);
+}

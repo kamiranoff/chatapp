@@ -64,3 +64,4 @@ typings/
 
 # BUILD
 build/
+dist/
