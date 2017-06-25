@@ -4,10 +4,8 @@ import sum from './sum';
 import './image_viewer';
 
 const socket = io();
-
 socket.on('connect', () => {
   console.log('socket.io connected');
-
 });
 
 socket.on('disconnect', () => {
@@ -28,10 +26,10 @@ socket.on('newUserJoined', (msg) => {
 
 
 socket.emit('createMessage', {
-  from:'Franck',
-  text:'Hi',
+  from: 'Franck',
+  text: 'Hi',
 }, function(data) {
   console.log('got it', data);
 });
 
-console.log('here', sum(10,100));
+console.log('here', sum(100, 100));

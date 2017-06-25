@@ -20,7 +20,7 @@ const config = {
   },
   output: {
     path: path.resolve(__dirname + '/dist'),
-    filename: '[name].js',
+    filename: '[name].[chunkhash].js',
     publicPath: '/dist/',
   },
   module: {
@@ -52,7 +52,7 @@ const config = {
       template: 'src/index.html'
     }),
     new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
+      name: ['vendor', 'manisfest'],
     }),
   ]
 };
